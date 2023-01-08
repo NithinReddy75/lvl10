@@ -1,5 +1,7 @@
 const express = require("express"); //importing express
 var csrf = require("tiny-csrf");
+
+
 const app = express(); // creating new application
 const bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
@@ -51,6 +53,7 @@ passport.use(
           const result = await bcrypt.compare(password, user.password);
           if (result) {
             return done(null, user);
+            
           } else {
             return done(null, false, { message: "Invalid password" });
           }
